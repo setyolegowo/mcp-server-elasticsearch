@@ -1,0 +1,44 @@
+{
+    "name": "@elastic/mcp-server-elasticsearch",
+    "description": "Elasticsearch MCP Server",
+    "version": "0.1.0",
+    "license": "Apache-2.0",
+    "author": "Elastic",
+    "type": "module",
+    "main": "dist/index.js",
+    "module": "dist/index.js",
+    "bin": {
+      "mcp-server-elasticsearch": "./dist/index.js"
+    },
+    "repository": "https://github.com/elastic/mcp-server-elasticsearch",
+    "bugs": "https://github.com/elastic/mcp-server-elasticsearch/issues",
+    "homepage": "https://github.com/elastic/mcp-server-elasticsearch",
+    "keywords": [
+      "elasticsearch",
+      "search",
+      "mcp",
+      "mcp-server"
+    ],
+    "files": [
+      "dist"
+    ],
+    "scripts": {
+      "build": "tsc && shx chmod +x dist/*.js",
+      "prepare": "npm run build",
+      "watch": "tsc --watch",
+      "start": "node dist/index.js",
+      "inspector": "npx @modelcontextprotocol/inspector node dist/index.js"
+    },
+    "dependencies": {
+      "@elastic/elasticsearch": "^8.17.1",
+      "@modelcontextprotocol/sdk": "1.8.0"
+    },
+    "devDependencies": {
+      "@types/node": "22.13.13",
+      "shx": "0.4.0",
+      "typescript": "5.8.2"
+    },
+    "publishConfig": {
+      "access": "public"
+    }
+  }
