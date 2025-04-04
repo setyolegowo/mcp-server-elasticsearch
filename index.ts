@@ -283,39 +283,20 @@ export async function createElasticsearchMcpServer(
     },
     async ({ index_or_alias, queryBody }) => {
       try {
-        // Get mappings to identify text fields for highlighting
-        const mappingResponseResponse = await fetch(`${url}/${index_or_alias}/_mapping`);
-        if (!mappingResponseResponse.ok) {
-          throw new Error(`Failed to fetch indices: ${mappingResponseResponse.statusText}`);
-        }
-        const mappingResponse = await mappingResponseResponse.json() as any;
-
         const searchRequest: estypes.SearchRequest = {
-          index: index_or_alias,
           ...queryBody,
         };
+        const body = JSON.stringify(searchRequest);
 
-        const response = await fetch(`${url}/${index_or_alias}/_query`, {
+        const response = await fetch(`${url}/${index_or_alias}/_search`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `ApiKey ${validatedConfig.apiKey}`,
           },
-          body: JSON.stringify({
-            query: searchRequest.query,
-            size: searchRequest.size,
-            from: searchRequest.from,
-            sort: searchRequest.sort,
-            highlight: {
-              fields: Object.keys(mappingResponse[index_or_alias]?.mappings?.properties || {}).reduce((acc, field) => {
-                acc[field] = { type: "plain" };
-                return acc;
-              }, {} as Record<string, any>),
-            },
-          }),
+          body,
         });
         if (!response.ok) {
-          throw new Error(`Failed to fetch indices: ${response.statusText}`);
+          throw new Error(`Failed to fetch indices: ${response.statusText} response: ${await response.text()}`);
         }
         const result = await response.json() as estypes.SearchResponse;
 
