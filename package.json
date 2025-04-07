@@ -1,18 +1,18 @@
 {
-    "name": "@elastic/mcp-server-elasticsearch",
+    "name": "@setyolegowo/mcp-server-elasticsearch",
     "description": "Elasticsearch MCP Server",
     "version": "0.1.0",
     "license": "Apache-2.0",
-    "author": "Elastic",
+    "author": "Setyo Legowo",
     "type": "module",
     "main": "dist/index.js",
     "module": "dist/index.js",
     "bin": {
       "mcp-server-elasticsearch": "./dist/index.js"
     },
-    "repository": "https://github.com/elastic/mcp-server-elasticsearch",
-    "bugs": "https://github.com/elastic/mcp-server-elasticsearch/issues",
-    "homepage": "https://github.com/elastic/mcp-server-elasticsearch",
+    "repository": "https://github.com/setyolegowo/mcp-server-elasticsearch",
+    "bugs": "https://github.com/setyolegowo/mcp-server-elasticsearch/issues",
+    "homepage": "https://github.com/setyolegowo/mcp-server-elasticsearch",
     "keywords": [
       "elasticsearch",
       "search",

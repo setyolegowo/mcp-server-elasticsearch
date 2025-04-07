@@ -7,14 +7,10 @@ startCommand:
     type: object
     required:
       - url
-      - apiKey
     properties:
       url:
         type: string
         description: Elasticsearch server URL
-      apiKey:
-        type: string
-        description: API key for Elasticsearch authentication
     default: {}
   commandFunction:
     # A JS function that produces the CLI command based on the given config to start the MCP on stdio.
@@ -23,10 +19,8 @@ startCommand:
       command: 'node',
       args: ['dist/index.js'],
       env: {
-        ES_URL: config.url,
-        ES_API_KEY: config.apiKey
+        ES_URL: config.url
       }
     })
   exampleConfig:
     url: http://localhost:9200
-    apiKey: dummy-api-key
