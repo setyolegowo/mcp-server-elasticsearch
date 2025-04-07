@@ -1,0 +1,32 @@
+# Smithery configuration file: https://smithery.ai/docs/config#smitheryyaml
+
+startCommand:
+  type: stdio
+  configSchema:
+    # JSON Schema defining the configuration options for the MCP.
+    type: object
+    required:
+      - url
+      - apiKey
+    properties:
+      url:
+        type: string
+        description: Elasticsearch server URL
+      apiKey:
+        type: string
+        description: API key for Elasticsearch authentication
+    default: {}
+  commandFunction:
+    # A JS function that produces the CLI command based on the given config to start the MCP on stdio.
+    |-
+    (config) => ({
+      command: 'node',
+      args: ['dist/index.js'],
+      env: {
+        ES_URL: config.url,
+        ES_API_KEY: config.apiKey
+      }
+    })
+  exampleConfig:
+    url: http://localhost:9200
+    apiKey: dummy-api-key

@@ -1,5 +1,7 @@
 # Elasticsearch MCP Server
 
+[![smithery badge](https://smithery.ai/badge/@setyolegowo/mcp-server-elasticsearch)](https://smithery.ai/server/@setyolegowo/mcp-server-elasticsearch)
+
 ## Overview
 
 This project is designed to serve as a backend server integrating with Elasticsearch for managing MCP (Message Conversion Protocol) data.
@@ -12,6 +14,14 @@ This project is designed to serve as a backend server integrating with Elasticse
 - Lightweight and scalable.
 
 ## Getting Started
+
+### Installing via Smithery
+
+To install mcp-server-elasticsearch for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@setyolegowo/mcp-server-elasticsearch):
+
+```bash
+npx -y @smithery/cli install @setyolegowo/mcp-server-elasticsearch --client claude
+```
 
 1. Clone the repository:
    ```
